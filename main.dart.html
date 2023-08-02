@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>main.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+
+<span class="s2">void </span><span class="s0">main() =&gt; runApp(</span><span class="s2">new </span><span class="s0">MyApp())</span><span class="s2">;</span>
+
+<span class="s2">class </span><span class="s0">MyApp </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s0">get i =&gt; </span><span class="s2">null;</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return new </span><span class="s0">MaterialApp(</span>
+      <span class="s0">title: </span><span class="s1">'Flutter Demo'</span><span class="s2">,</span>
+      <span class="s0">theme: </span><span class="s2">new </span><span class="s0">ThemeData(</span>
+        <span class="s0">primarySwatch: Colors.blue</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">home: </span><span class="s2">new </span><span class="s0">MyHomePage(title: </span><span class="s1">'Calculator'</span><span class="s2">, </span><span class="s0">key: i)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">MyHomePage </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s0">MyHomePage({required Key key</span><span class="s2">, </span><span class="s0">required </span><span class="s2">this</span><span class="s0">.title}) : </span><span class="s2">super</span><span class="s0">(key: key)</span><span class="s2">;</span>
+
+  <span class="s2">final </span><span class="s0">String title</span><span class="s2">;</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_MyHomePageState createState() =&gt; </span><span class="s2">new </span><span class="s0">_MyHomePageState()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_MyHomePageState </span><span class="s2">extends </span><span class="s0">State&lt;MyHomePage&gt; {</span>
+
+  <span class="s0">String output = </span><span class="s1">&quot;0&quot;</span><span class="s2">;</span>
+
+  <span class="s0">String _output = </span><span class="s1">&quot;0&quot;</span><span class="s2">;</span>
+  <span class="s0">double num1 = </span><span class="s3">0.0</span><span class="s2">;</span>
+  <span class="s0">double num2 = </span><span class="s3">0.0</span><span class="s2">;</span>
+  <span class="s0">String operand = </span><span class="s1">&quot;&quot;</span><span class="s2">;</span>
+
+  <span class="s0">buttonPressed(String buttonText){</span>
+
+    <span class="s2">if</span><span class="s0">(buttonText == </span><span class="s1">&quot;CLEAR&quot;</span><span class="s0">){</span>
+      
+      <span class="s0">_output = </span><span class="s1">&quot;0&quot;</span><span class="s2">;</span>
+      <span class="s0">num1 = </span><span class="s3">0.0</span><span class="s2">;</span>
+      <span class="s0">num2 = </span><span class="s3">0.0</span><span class="s2">;</span>
+      <span class="s0">operand = </span><span class="s1">&quot;&quot;</span><span class="s2">;</span>
+
+    <span class="s0">} </span><span class="s2">else if </span><span class="s0">(buttonText == </span><span class="s1">&quot;+&quot; </span><span class="s0">|| buttonText == </span><span class="s1">&quot;-&quot; </span><span class="s0">|| buttonText == </span><span class="s1">&quot;/&quot; </span><span class="s0">|| buttonText == </span><span class="s1">&quot;X&quot;</span><span class="s0">){</span>
+
+      <span class="s0">num1 = double.parse(output)</span><span class="s2">;</span>
+
+      <span class="s0">operand = buttonText</span><span class="s2">;</span>
+
+      <span class="s0">_output = </span><span class="s1">&quot;0&quot;</span><span class="s2">;</span>
+
+    <span class="s0">} </span><span class="s2">else if</span><span class="s0">(buttonText == </span><span class="s1">&quot;.&quot;</span><span class="s0">){</span>
+
+      <span class="s2">if</span><span class="s0">(_output.contains(</span><span class="s1">&quot;.&quot;</span><span class="s0">)){</span>
+        <span class="s0">print(</span><span class="s1">&quot;Already conatains a decimals&quot;</span><span class="s0">)</span><span class="s2">;</span>
+        <span class="s2">return;</span>
+
+      <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+        <span class="s0">_output = _output + buttonText</span><span class="s2">;</span>
+      <span class="s0">}</span>
+
+    <span class="s0">} </span><span class="s2">else if </span><span class="s0">(buttonText == </span><span class="s1">&quot;=&quot;</span><span class="s0">){</span>
+
+      <span class="s0">num2 = double.parse(output)</span><span class="s2">;</span>
+
+      <span class="s2">if</span><span class="s0">(operand == </span><span class="s1">&quot;+&quot;</span><span class="s0">){</span>
+        <span class="s0">_output = (num1 + num2).toString()</span><span class="s2">;</span>
+      <span class="s0">}</span>
+      <span class="s2">if</span><span class="s0">(operand == </span><span class="s1">&quot;-&quot;</span><span class="s0">){</span>
+        <span class="s0">_output = (num1 - num2).toString()</span><span class="s2">;</span>
+      <span class="s0">}</span>
+      <span class="s2">if</span><span class="s0">(operand == </span><span class="s1">&quot;X&quot;</span><span class="s0">){</span>
+        <span class="s0">_output = (num1 * num2).toString()</span><span class="s2">;</span>
+      <span class="s0">}</span>
+      <span class="s2">if</span><span class="s0">(operand == </span><span class="s1">&quot;/&quot;</span><span class="s0">){</span>
+        <span class="s0">_output = (num1 / num2).toString()</span><span class="s2">;</span>
+      <span class="s0">}</span>
+
+      <span class="s0">num1 = </span><span class="s3">0.0</span><span class="s2">;</span>
+      <span class="s0">num2 = </span><span class="s3">0.0</span><span class="s2">;</span>
+      <span class="s0">operand = </span><span class="s1">&quot;&quot;</span><span class="s2">;</span>
+
+    <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+
+      <span class="s0">_output = _output + buttonText</span><span class="s2">;</span>
+
+    <span class="s0">}</span>
+
+    <span class="s0">print(_output)</span><span class="s2">;</span>
+
+    <span class="s0">setState(() {</span>
+      
+      <span class="s0">output = double.parse(_output).toStringAsFixed(</span><span class="s3">2</span><span class="s0">)</span><span class="s2">;</span>
+
+    <span class="s0">})</span><span class="s2">;</span>
+
+  <span class="s0">}</span>
+  
+  <span class="s0">Widget buildButton(String buttonText) {</span>
+    <span class="s2">return new </span><span class="s0">Expanded(</span>
+      <span class="s0">child: </span><span class="s2">new </span><span class="s0">OutlinedButton(</span>
+        <span class="s0">child: </span><span class="s2">new </span><span class="s0">Text(buttonText</span><span class="s2">,</span>
+          <span class="s0">style: TextStyle(</span>
+            <span class="s0">fontSize: </span><span class="s3">20.0</span><span class="s2">,</span>
+            <span class="s0">fontWeight: FontWeight.bold</span>
+          <span class="s0">)</span><span class="s2">,</span>
+          <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">onPressed: () =&gt; </span>
+          <span class="s0">buttonPressed(buttonText)</span>
+        <span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return new </span><span class="s0">Scaffold(</span>
+        <span class="s0">appBar: </span><span class="s2">new </span><span class="s0">AppBar(</span>
+          <span class="s0">title: </span><span class="s2">new </span><span class="s0">Text(widget.title)</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">body: </span><span class="s2">new </span><span class="s0">Container(</span>
+            <span class="s0">child: </span><span class="s2">new </span><span class="s0">Column(</span>
+          <span class="s0">children: &lt;Widget&gt;[</span>
+            <span class="s2">new </span><span class="s0">Container(</span>
+              <span class="s0">alignment: Alignment.centerRight</span><span class="s2">,</span>
+              <span class="s0">padding: </span><span class="s2">new </span><span class="s0">EdgeInsets.symmetric(</span>
+                <span class="s0">vertical: </span><span class="s3">24.0</span><span class="s2">,</span>
+                <span class="s0">horizontal: </span><span class="s3">12.0</span>
+              <span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">child: </span><span class="s2">new </span><span class="s0">Text(output</span><span class="s2">, </span><span class="s0">style: </span><span class="s2">new </span><span class="s0">TextStyle(</span>
+                <span class="s0">fontSize: </span><span class="s3">48.0</span><span class="s2">,</span>
+                <span class="s0">fontWeight: FontWeight.bold</span><span class="s2">,</span>
+                
+              <span class="s0">)))</span><span class="s2">,</span>
+            <span class="s2">new </span><span class="s0">Expanded(</span>
+              <span class="s0">child: </span><span class="s2">new </span><span class="s0">Divider()</span><span class="s2">,</span>
+            <span class="s0">)</span><span class="s2">,</span>
+            
+
+            <span class="s2">new </span><span class="s0">Column(children: [</span>
+              <span class="s2">new </span><span class="s0">Row(children: [</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;7&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;8&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;9&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;/&quot;</span><span class="s0">)</span>
+              <span class="s0">])</span><span class="s2">,</span>
+
+              <span class="s2">new </span><span class="s0">Row(children: [</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;4&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;5&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;6&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;X&quot;</span><span class="s0">)</span>
+              <span class="s0">])</span><span class="s2">,</span>
+
+              <span class="s2">new </span><span class="s0">Row(children: [</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;1&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;2&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;3&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;-&quot;</span><span class="s0">)</span>
+              <span class="s0">])</span><span class="s2">,</span>
+
+              <span class="s2">new </span><span class="s0">Row(children: [</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;.&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;0&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;00&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;+&quot;</span><span class="s0">)</span>
+              <span class="s0">])</span><span class="s2">,</span>
+
+              <span class="s2">new </span><span class="s0">Row(children: [</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;CLEAR&quot;</span><span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">buildButton(</span><span class="s1">&quot;=&quot;</span><span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">])</span>
+            <span class="s0">])</span>
+          <span class="s0">]</span><span class="s2">,</span>
+        <span class="s0">)))</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>
